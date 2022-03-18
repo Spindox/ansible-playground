@@ -24,6 +24,6 @@ jobs:
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
           context: ./worker
-          file: Dockerfile-ubuntu
+          file: {context}/Dockerfile-ubuntu
           push: true
           tags: spxcloudevops/ansible-playground-ubuntu-worker

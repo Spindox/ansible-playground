@@ -3,8 +3,8 @@ name: Build and publish Controller
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    paths:
+      - 'controller/**'
 
 jobs:
   push_to_registry:

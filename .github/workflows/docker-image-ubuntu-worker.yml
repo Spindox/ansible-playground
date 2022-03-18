@@ -3,8 +3,8 @@ name: Build and publish Ubuntu Worker
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    paths:
+      - 'worker/**'
 
 jobs:
   push_to_registry:

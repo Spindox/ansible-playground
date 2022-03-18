@@ -3,8 +3,8 @@ name: Build and publish Web
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    paths:
+      - 'web/**'
 
 jobs:
   push_to_registry:
@@ -13,7 +13,18 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
-      
+
+      - uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            src:
+              - 'src/**'
+
+        # run only if some file in 'src' folder was changed
+      - if: steps.changes.outputs.src == 'true'
+        run: ...
+
       - name: Log in to Docker Hub
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
         with:

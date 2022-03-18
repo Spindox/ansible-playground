@@ -30,7 +30,7 @@ If the commands both answer with the version number you're all set up!
 
 ## Running it
 
-Running this playground is a piece of cake, all you have to do is download the [docker-compose](https://github.com/Spindox/ansible-playground/releases/download/v1.0/docker-compose.yml) to a folder and then navigate to the folder and run
+Running this playground is a piece of cake, all you have to do is download the [docker-compose.yaml](https://github.com/Spindox/ansible-playground/releases/download/v1.0/docker-compose.yml) file to a folder and then navigate to the folder and run
 
 ```bash
 docker-compose up

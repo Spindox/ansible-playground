@@ -1,0 +1,34 @@
+version: "3.9"
+services:
+  controller:
+    hostname: controller
+    image: spxcloudevops/ansible-playground-controller
+    ports:
+      - '8090:9090'
+  web:
+    image: spxcloudevops/ansible-playground-web
+    depends_on:
+      - controller
+      - worker1
+      - worker2
+      - worker3
+    ports:
+      - '8080:80'
+  worker1:
+    hostname: ubuntu01
+    image: spxcloudevops/ansible-playground-ubuntu-worker
+    ports: 
+      - '8091:9090'
+      - '2291:22'
+  worker2:
+    hostname: ubuntu02
+    image: spxcloudevops/ansible-playground-ubuntu-worker
+    ports: 
+      - '8092:9090'
+      - '2292:22'
+  worker3:
+    hostname: centos01
+    image: spxcloudevops/ansible-playground-centos-worker
+    ports: 
+      - '8093:9090'
+      - '2293:22'

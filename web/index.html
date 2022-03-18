@@ -1,0 +1,156 @@
+<html>
+  <head>
+    <style>
+      html,
+      body {
+        border: 0;
+        margin: 0;
+        font-family: sans-serif;
+        padding: 8px;
+        background: #1e1e1e;
+      }
+
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+      }
+
+      .card {
+        margin: 8px;
+        border-radius: 4px;
+        background: #606060;
+        box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
+          0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+        flex: 1 1 48%;
+        display: flex;
+        min-height: 46vh;
+        user-select: none;
+        flex-direction: column;
+      }
+
+      .card-zoomed {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+
+      .card__head {
+        padding: 8px 16px;
+        padding-top: 16px;
+        font-weight: 500;
+        font-size: 1rem;
+        line-height: 1.2rem;
+        font-weight: 500;
+        letter-spacing: 0.0125em;
+        color: #fff;
+        display: flex;
+      }
+
+      .card__head__container {
+        display: flex;
+        flex: 1;
+      }
+
+      .card__head__title {
+        flex: 1;
+      }
+
+      .card__body {
+        padding-right: 16px;
+        padding-left: 16px;
+        padding-bottom: 16px;
+        flex: 1;
+      }
+
+      .card__head__maximize:before {
+        border: 2px solid #fff;
+        border-top-width: 4px;
+        width: 0.9rem;
+        height: 0.9rem;
+        box-sizing: border-box;
+        border-collapse: collapse;
+        cursor: pointer;
+        content: '';
+        display: block;
+      }
+
+      .card-zoomed .card__head__maximize:before {
+        border: none;
+        border-bottom: 2px solid #fff;
+      }
+
+      iframe {
+        border-radius: 4px;
+        border: none;
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="card__head">
+          <div class="card__head__container">
+            <div class="card__head__title">Controller</div>
+            <div class="card__head__toolbox">
+              <div class="card__head__maximize"></div>
+            </div>
+          </div>
+        </div><div class="card__body">
+          <iframe src="http://localhost:8090"></iframe>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__head">
+          <div class="card__head__container">
+            <div class="card__head__title">Ubuntu 01</div>
+            <div class="card__head__toolbox">
+              <div class="card__head__maximize"></div>
+            </div>
+          </div>
+        </div><div class="card__body">
+          <iframe src="http://localhost:8091"></iframe>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__head">
+          <div class="card__head__container">
+            <div class="card__head__title">Ubuntu 02</div>
+            <div class="card__head__toolbox">
+              <div class="card__head__maximize"></div>
+            </div>
+          </div>
+        </div>
+        <div class="card__body">
+          <iframe src="http://localhost:8092"></iframe>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__head">
+          <div class="card__head__container">
+            <div class="card__head__title">Ubuntu 03</div>
+            <div class="card__head__toolbox">
+              <div class="card__head__maximize"></div>
+            </div>
+          </div>
+        </div><div class="card__body">
+          <iframe src="http://localhost:8093"></iframe>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.querySelectorAll('.card__head__maximize').forEach((el) =>
+        el.addEventListener('click', (e) => {
+          e.preventDefault()
+          e.stopImmediatePropagation()
+          console.info(e.target.parentNode.parentNode.parentNode.parentNode.classList.toggle('card-zoomed'))
+        })
+      )
+    </script>
+  </body>
+</html>

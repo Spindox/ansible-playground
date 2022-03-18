@@ -1,0 +1,16 @@
+FROM centos:7.9.2009
+ADD https://github.com/tsl0922/ttyd/releases/download/1.6.3/ttyd.x86_64 /usr/bin/ttyd
+RUN chmod +x /usr/bin/ttyd
+
+RUN yum install -y openssh-server python3 vim nano bind-utils netcat; \
+rm -rf /etc/ssh/ssk*key; \
+ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''; \
+ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key -N ''; \
+ssh-keygen -t ed25519 -f /etc/ssh/ssh_host_ed25519_key -N ''
+RUN pip3 install --no-cache-dir --upgrade pip
+RUN echo 'root:ansible' | chpasswd; \
+echo 'PermitRootLogin=yes' >> /etc/ssh/sshd_config;
+EXPOSE 9090 22
+COPY ./docker-entrypoint.sh /
+RUN chmod +x /docker-entrypoint.sh
+ENTRYPOINT ["/docker-entrypoint.sh"]

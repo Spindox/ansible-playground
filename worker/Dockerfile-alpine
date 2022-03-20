@@ -1,6 +1,7 @@
 FROM alpine:3.14.4
   RUN apk add --update --no-cache openssh bind-tools netcat-openbsd ttyd python3 bash; \
 ssh-keygen -A; \
+cd /usr/bin; ln -s python3.9 python;cd /root; \
 python3 -m ensurepip; \
 pip3 install --no-cache-dir --upgrade pip; \
 echo 'root:ansible' | chpasswd; \

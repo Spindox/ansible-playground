@@ -16,6 +16,8 @@ services:
       - worker3
     ports:
       - '8080:80'
+    volumes:
+      - controller-root:/root
   worker1:
     hostname: ubuntu
     image: spxcloudevops/ansible-playground-ubuntu-worker
@@ -23,6 +25,8 @@ services:
     ports: 
       - '8091:9090'
       - '2291:22'
+    volumes:
+      - ubuntu-root:/root
   worker2:
     hostname: alpine
     image: spxcloudevops/ansible-playground-alpine-worker
@@ -30,6 +34,8 @@ services:
     ports: 
       - '8092:9090'
       - '2292:22'
+    volumes:
+      - alpine-root:/root
   worker3:
     hostname: centos
     image: spxcloudevops/ansible-playground-centos-worker
@@ -37,3 +43,10 @@ services:
     ports: 
       - '8093:9090'
       - '2293:22'
+    volumes:
+      - centos-root:/root
+volumes:
+  controller-root:
+  ubuntu-root:
+  alpine-root:
+  centos-root:

@@ -6,7 +6,7 @@ pip3 install --no-cache-dir --upgrade pip; \
 echo 'root:ansible' | chpasswd; \
 echo 'PermitRootLogin=yes' >> /etc/ssh/sshd_config; \
 sed -i s/ash/bash/g /etc/passwd; \
-echo "export PS1='\u@\h:\w \\$ '" > /root/.bashrc
+echo "export PS1='\u@\h:\w\\$ '" > /root/.bashrc
 COPY ./docker-entrypoint.sh /
 RUN chmod +x /docker-entrypoint.sh
 EXPOSE 9090 22

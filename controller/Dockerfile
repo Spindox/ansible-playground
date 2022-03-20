@@ -32,6 +32,8 @@ mkdir -p /root/.cache && \
 touch /root/.cache/motd.legal-displayed
 COPY --from=ttyd-builder /usr/local/bin/ttyd /usr/bin/ttyd
 RUN chmod +x /usr/bin/ttyd
+COPY --from=ttyd-builder /usr/local/lib /usr/local/lib
+RUN ldconfig
 COPY ./docker-entrypoint.sh /
 RUN chmod +x /docker-entrypoint.sh
 EXPOSE 9090 22

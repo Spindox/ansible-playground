@@ -28,7 +28,7 @@ echo 'PermitRootLogin=yes' >> /etc/ssh/sshd_config;
 COPY --from=ttyd-builder /usr/local/bin/ttyd /usr/bin/ttyd
 RUN chmod +x /usr/bin/ttyd
 COPY --from=ttyd-builder /usr/local/lib /usr/local/lib
-RUN echo '/usr/local/lib' > /etc/ld.so.conf.d/local-lib.conf && ldconfig
+RUN echo '/usr/local/lib' > /etc/ld.so.conf.d/libc.conf && ldconfig
 COPY --from=ttyd-builder /lib64/libuv.so.1.0.0 /lib64/libuv.so.1.0.0
 COPY --from=ttyd-builder /lib64/libuv.so.1 /lib64/libuv.so.1
 COPY --from=ttyd-builder /lib64/libuv.so /lib64/libuv.so

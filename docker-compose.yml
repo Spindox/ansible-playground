@@ -3,10 +3,12 @@ services:
   controller:
     hostname: controller
     image: spxcloudevops/ansible-playground-controller
+    restart: always
     ports:
       - '8090:9090'
   web:
     image: spxcloudevops/ansible-playground-web
+    restart: always
     depends_on:
       - controller
       - worker1
@@ -15,20 +17,23 @@ services:
     ports:
       - '8080:80'
   worker1:
-    hostname: ubuntu01
+    hostname: ubuntu
     image: spxcloudevops/ansible-playground-ubuntu-worker
+    restart: always
     ports: 
       - '8091:9090'
       - '2291:22'
   worker2:
-    hostname: ubuntu02
-    image: spxcloudevops/ansible-playground-ubuntu-worker
+    hostname: alpine
+    image: spxcloudevops/ansible-playground-alpine-worker
+    restart: always
     ports: 
       - '8092:9090'
       - '2292:22'
   worker3:
-    hostname: centos01
+    hostname: centos
     image: spxcloudevops/ansible-playground-centos-worker
+    restart: always
     ports: 
       - '8093:9090'
       - '2293:22'

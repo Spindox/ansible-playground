@@ -28,4 +28,5 @@ RUN chmod +x /usr/bin/ttyd
 COPY ./docker-entrypoint.sh /
 RUN chmod +x /docker-entrypoint.sh
 EXPOSE 9090 22
+WORKDIR /root
 ENTRYPOINT ["/docker-entrypoint.sh"]

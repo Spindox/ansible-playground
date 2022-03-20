@@ -53,6 +53,14 @@ body {
   background-size: 20%;
 }
 
+.card.alpine {
+  background-color: #0d597f;
+  background-image: url(images/alpine.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 20%;
+}
+
 .card--zoomed {
   position: fixed;
   top: 8px;

@@ -1,0 +1,14 @@
+FROM alpine:3.14.4
+  RUN apk add --update --no-cache openssh bind-tools netcat-openbsd ttyd python3 bash; \
+ssh-keygen -A; \
+python3 -m ensurepip; \
+pip3 install --no-cache-dir --upgrade pip; \
+echo 'root:ansible' | chpasswd; \
+echo 'PermitRootLogin=yes' >> /etc/ssh/sshd_config; \
+sed -i s/ash/bash/g /etc/passwd; \
+echo "export PS1='\u@\h:\w \\$ '" > /root/.bashrc
+COPY ./docker-entrypoint.sh /
+RUN chmod +x /docker-entrypoint.sh
+EXPOSE 9090 22
+WORKDIR /root
+ENTRYPOINT ["/docker-entrypoint.sh"]

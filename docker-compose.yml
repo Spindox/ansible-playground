@@ -18,7 +18,7 @@ services:
       - '8080:80'
     volumes:
       - controller-root:/root
-  worker1:
+  ubuntu:
     hostname: ubuntu
     image: spxcloudevops/ansible-playground-ubuntu-worker
     restart: always
@@ -27,7 +27,7 @@ services:
       - '2291:22'
     volumes:
       - ubuntu-root:/root
-  worker2:
+  alpine:
     hostname: alpine
     image: spxcloudevops/ansible-playground-alpine-worker
     restart: always
@@ -36,7 +36,7 @@ services:
       - '2292:22'
     volumes:
       - alpine-root:/root
-  worker3:
+  centos:
     hostname: centos
     image: spxcloudevops/ansible-playground-centos-worker
     restart: always

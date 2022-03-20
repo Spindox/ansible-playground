@@ -22,43 +22,35 @@ body {
   background: #606060;
   box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
     0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
-  flex: 1 1 48%;
+  flex: 1 1 calc(50% - 16px);
   display: flex;
-  min-height: 46vh;
+  min-height: calc(50vh - 24px);
   user-select: none;
   flex-direction: column;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 20%;
+  z-index: 1;
 }
 
 .card.controller {
-  background: #606060;
+  background-color: #606060;
   background-image: url(images/controller.svg);
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 20%;
 }
 
 .card.centos {
-  background: #204c8d;
+  background-color: #932178;
   background-image: url(images/centos.svg);
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 20%;
 }
 
 .card.ubuntu {
   background-color: #e95420;
   background-image: url(images/ubuntu.svg);
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 20%;
 }
 
 .card.alpine {
   background-color: #0d597f;
   background-image: url(images/alpine.svg);
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 20%;
 }
 
 .card--zoomed {
@@ -67,7 +59,7 @@ body {
   bottom: 8px;
   left: 8px;
   right: 8px;
-  z-index: 100;
+  z-index: 2;
 }
 
 .card__head {

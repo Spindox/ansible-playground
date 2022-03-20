@@ -19,7 +19,7 @@ make && make install
 FROM ubuntu:21.04
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
-apt-get install -y python3 python3-pip nano vim openssh-server sshpass iputils-ping netcat dnsutils libuv1 && \
+apt-get install -y python3 python3-pip nano vim openssh-server sshpass iputils-ping netcat dnsutils libuv1 less jq && \
 rm -rf /var/lib/apt/lists/*; \
 update-rc.d ssh defaults && service ssh start
 RUN pip3 install --no-cache-dir --upgrade pip; \

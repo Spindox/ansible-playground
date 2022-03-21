@@ -25,19 +25,25 @@ services:
     ports: 
       - '8191:9090'
     volumes:
-      - ubuntu-root:/root
+      - ubuntu-root01:/root
   ubuntu02:
     hostname: ubuntu02
     image: spxcloudevops/ansible-playground-ubuntu-worker
     restart: always
     ports: 
       - '8192:9090'
+    volumes:
+      - ubuntu-root02:/root
+
   ubuntu03:
     hostname: ubuntu03
     image: spxcloudevops/ansible-playground-ubuntu-worker
     restart: always
     ports: 
       - '8193:9090'
+    volumes:
+      - ubuntu-root03:/root
+
   alpine01:
     hostname: alpine01
     image: spxcloudevops/ansible-playground-alpine-worker
@@ -45,7 +51,7 @@ services:
     ports: 
       - '8291:9090'
     volumes:
-      - alpine-root:/root
+      - alpine-root01:/root
   alpine02:
     hostname: alpine02
     image: spxcloudevops/ansible-playground-alpine-worker
@@ -53,7 +59,7 @@ services:
     ports: 
       - '8292:9090'
     volumes:
-      - alpine-root:/root
+      - alpine-root02:/root
   alpine03:
     hostname: alpine03
     image: spxcloudevops/ansible-playground-alpine-worker
@@ -61,7 +67,7 @@ services:
     ports: 
       - '8293:9090'
     volumes:
-      - alpine-root:/root
+      - alpine-root03:/root
   centos01:
     hostname: centos01
     image: spxcloudevops/ansible-playground-centos-worker

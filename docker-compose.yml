@@ -6,6 +6,8 @@ services:
     restart: always
     ports:
       - '8090:9090'
+    volumes:
+      - ./controller-root:/root
   web:
     image: spxcloudevops/ansible-playground-web
     restart: always
@@ -16,10 +18,8 @@ services:
       - worker3
     ports:
       - '8080:80'
-    volumes:
-      - controller-root:/root
-  ubuntu:
-    hostname: ubuntu
+  ubuntu01:
+    hostname: ubuntu01
     image: spxcloudevops/ansible-playground-ubuntu-worker
     restart: always
     ports: 
@@ -27,8 +27,14 @@ services:
       - '2291:22'
     volumes:
       - ubuntu-root:/root
-  alpine:
-    hostname: alpine
+  ubuntu02:
+    hostname: ubuntu02
+    image: spxcloudevops/ansible-playground-ubuntu-worker
+  ubuntu03:
+    hostname: ubuntu03
+    image: spxcloudevops/ansible-playground-ubuntu-worker
+  alpine01:
+    hostname: alpine01
     image: spxcloudevops/ansible-playground-alpine-worker
     restart: always
     ports: 
@@ -36,8 +42,14 @@ services:
       - '2292:22'
     volumes:
       - alpine-root:/root
-  centos:
-    hostname: centos
+  alpine02:
+    hostname: alpine02
+    image: spxcloudevops/ansible-playground-alpine-worker
+  alpine03:
+    hostname: alpine03
+    image: spxcloudevops/ansible-playground-alpine-worker
+  centos01:
+    hostname: centos01
     image: spxcloudevops/ansible-playground-centos-worker
     restart: always
     ports: 
@@ -45,8 +57,13 @@ services:
       - '2293:22'
     volumes:
       - centos-root:/root
+  centos02:
+    hostname: centos02
+    image: spxcloudevops/ansible-playground-centos-worker
+  centos03:
+    hostname: centos03
+    image: spxcloudevops/ansible-playground-centos-worker
 volumes:
-  controller-root:
   ubuntu-root:
   alpine-root:
   centos-root:

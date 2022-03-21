@@ -1,7 +1,7 @@
 <html>
   <head>
     <title>Ansible Playground</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <div class="container">
@@ -9,6 +9,7 @@
         <div class="card__head">
           <div class="card__head__container">
             <div class="card__head__title">controller</div>
+            <div class="card__head__spacer"></div>
             <div class="card__head__toolbox">
               <div class="card__head__maximize"></div>
             </div>
@@ -21,40 +22,58 @@
       <div class="card ubuntu">
         <div class="card__head">
           <div class="card__head__container">
-            <div class="card__head__title">ubuntu01</div>
+            <div class="card__head__title">ubuntu</div>
+            <div class="card__head__selector">
+              <div data-port="8191" class="card__head__selector__number active">01</div>
+              <div data-port="8192" class="card__head__selector__number">02</div>
+              <div data-port="8193" class="card__head__selector__number">03</div>
+            </div>
+            <div class="card__head__spacer"></div>
             <div class="card__head__toolbox">
               <div class="card__head__maximize"></div>
             </div>
           </div>
         </div>
         <div class="card__body">
-          <iframe src="http://localhost:8091"></iframe>
+          <iframe src="http://localhost:8191"></iframe>
         </div>
       </div>
       <div class="card alpine">
         <div class="card__head">
           <div class="card__head__container">
-            <div class="card__head__title">alpine01</div>
+            <div class="card__head__title">alpine</div>
+            <div class="card__head__selector">
+              <div data-port="8291" class="card__head__selector__number active">01</div>
+              <div data-port="8292" class="card__head__selector__number">02</div>
+              <div data-port="8293" class="card__head__selector__number">03</div>
+            </div>
+            <div class="card__head__spacer"></div>
             <div class="card__head__toolbox">
               <div class="card__head__maximize"></div>
             </div>
           </div>
         </div>
         <div class="card__body">
-          <iframe src="http://localhost:8092"></iframe>
+          <iframe src="http://localhost:8291"></iframe>
         </div>
       </div>
       <div class="card centos">
         <div class="card__head">
           <div class="card__head__container">
-            <div class="card__head__title">centos01</div>
+            <div class="card__head__title">centos</div>
+            <div class="card__head__selector">
+              <div data-port="8391" class="card__head__selector__number active">01</div>
+              <div data-port="8392" class="card__head__selector__number">02</div>
+              <div data-port="8393" class="card__head__selector__number">03</div>
+            </div>
+            <div class="card__head__spacer"></div>
             <div class="card__head__toolbox">
               <div class="card__head__maximize"></div>
             </div>
           </div>
         </div>
         <div class="card__body">
-          <iframe src="http://localhost:8093"></iframe>
+          <iframe src="http://localhost:8391"></iframe>
         </div>
       </div>
     </div>
@@ -71,6 +90,15 @@
       document
         .querySelectorAll('.card__head')
         .forEach((el) => el.addEventListener('dblclick', toggleZoom))
+
+      document
+        .querySelectorAll('.card__head__selector__number')
+        .forEach((el) => el.addEventListener('click', (e) => {
+          const target = e.target
+          target.closest('.card__head__selector').querySelectorAll('.card__head__selector__number').forEach(e => e.classList.remove('active'))
+          target.classList.add('active')
+          target.closest('.card').querySelector('iframe').src = `http://localhost:${target.dataset.port}`
+        }))
     </script>
   </body>
 </html>

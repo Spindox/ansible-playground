@@ -79,8 +79,27 @@ body {
   align-items: center;
 }
 
-.card__head__title {
+.card__head__spacer {
   flex: 1;
+}
+
+.card__head__selector {
+  margin: 0 4px;
+  display: flex;
+}
+
+.card__head__selector__number {
+  cursor: pointer;
+  font-size: .8rem;
+  padding: 0px 4px;
+  box-sizing: border-box;
+  border-collapse: collapse;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.card__head__selector__number.active {
+  border: 1px solid #ffffff;
 }
 
 .card__body {
@@ -100,6 +119,7 @@ body {
   cursor: pointer;
   content: '';
   display: block;
+  border-radius: 2px;
 }
 
 .card-zoomed .card__head__maximize:before {

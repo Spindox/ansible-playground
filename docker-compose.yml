@@ -13,9 +13,15 @@ services:
     restart: always
     depends_on:
       - controller
-      - worker1
-      - worker2
-      - worker3
+      - ubuntu01
+      - ubuntu02
+      - ubuntu03
+      - alpine01
+      - alpine02
+      - alpine03
+      - centos01
+      - centos02
+      - centos03
     ports:
       - '8080:80'
   ubuntu01:
